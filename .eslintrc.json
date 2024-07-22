@@ -1,0 +1,8 @@
+{
+  "extends": ["next/core-web-vitals", "react-app", "plugin:prettier/recommended"],
+  "parser": "@typescript-eslint/parser",
+  "root": true,
+  "rules": {
+
+  }
+}

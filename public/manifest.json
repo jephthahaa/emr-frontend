@@ -1,0 +1,32 @@
+{
+    "theme_color": "#07926F",
+    "background_color": "#033A2C",
+    "display": "standalone",
+    "scope": "/",
+    "start_url": "/",
+    "name": "Zomujo EMR",
+    "short_name": "Zomujo EMR",
+    "description": "Zomujo EMR envisions a secure platform for patients and healthcare providers. It aims to streamline medical record management, appointments, and healthcare communication. The goal is to enhance patient care through efficient access to accurate medical data and data-driven insights for healthcare professionals. The user-friendly design and advanced features also aim to boost patient engagement and improve overall healthcare delivery.",
+    "icons": [
+        {
+            "src": "/icon-192x192.png",
+            "sizes": "192x192",
+            "type": "image/png"
+        },
+        {
+            "src": "/icon-256x256.png",
+            "sizes": "256x256",
+            "type": "image/png"
+        },
+        {
+            "src": "/icon-384x384.png",
+            "sizes": "384x384",
+            "type": "image/png"
+        },
+        {
+            "src": "/icon-512x512.png",
+            "sizes": "512x512",
+            "type": "image/png"
+        }
+    ]
+}

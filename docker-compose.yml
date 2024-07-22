@@ -1,0 +1,25 @@
+version: "3"
+
+services:
+  zomujo-patient:
+    build: 
+      context: .
+      dockerfile: Dockerfile
+      args:
+        SERVICE_MODE: "PATIENT"
+        URL: "https://zomujo-patient.zomujo-emr.orb.local"
+    ports:
+      - "3010:3010"
+    volumes:
+      - /app/node_modules
+  zomujo-doctor:
+    build: 
+      context: .
+      dockerfile: Dockerfile
+      args:
+        SERVICE_MODE: "DOCTOR"
+        URL: "https://zomujo-doctor.zomujo-emr.orb.local"
+    ports:
+      - "3011:3010"
+    volumes:
+      - /app/node_modules

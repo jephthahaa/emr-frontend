@@ -1,0 +1,36 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.c-border-dashed {
+  background-image: url("data:image/svg+xml,%3csvg width='100%25' height='100%25' xmlns='http://www.w3.org/2000/svg'%3e%3crect width='100%25' height='100%25' fill='none' rx='16' ry='16' stroke='%23D0D5DDFF' stroke-width='4' stroke-dasharray='4%2c 10' stroke-dashoffset='0' stroke-linecap='square'/%3e%3c/svg%3e");
+  border-radius: 16px;
+}
+
+body::-webkit-scrollbar {
+  display: none;
+  /* Chrome, Safari, Opera */
+}
+
+/* 
+* {
+  @apply transition-all duration-150 ease-in-out;
+}
+.no-transition {
+  @apply transition-none duration-0;
+}
+
+.gradient-border {
+  @apply relative border-[1.5px] border-solid border-transparent;
+  background-clip: padding-box; 
+}
+
+.gradient-border::before {
+  @apply absolute inset-0 -z-10 -m-[1.5px] rounded-[inherit] border-primaryDark content-[''];
+  background: linear-gradient(3.01deg, #43a28000, #86d5b9 97.48%);
+}
+
+.gradient-border::after {
+  @apply absolute inset-0 -z-20 -m-[3px] rounded-[9.5px] bg-primaryDark  content-[''];
+} 
+*/
