@@ -4,8 +4,10 @@ import {
   IBroadcast,
   IDoctor,
   ILog,
+  IMedicine,
   IPaginatedApiResponse,
   IPatient,
+  ISymptom,
   ITransaction,
 } from "@/types";
 import { createQueryString } from "@/utils";
@@ -263,6 +265,172 @@ export function adminRoutes(authAxios: AxiosInstance) {
         `/admin/broadcasts?limit=${limit}&page=${page}`,
       );
       return response.data;
+    },
+    medicines: {
+      getAllMedicine: async ({
+        type = "",
+        limit = 20,
+        page = 1,
+        ...data
+      }: {
+        limit?: number;
+        page?: number;
+        search?: string;
+        sort?: string;
+        type?: string;
+      }) => {
+        const query = createQueryString({
+          limit,
+          page,
+          ...data,
+        });
+        const response = await authAxios.get<IPaginatedApiResponse<IMedicine>>(
+          `/admin/medicines?${query}`,
+        );
+        return response.data;
+      },
+      postMedicine: async (data: Omit<IMedicine, "id">) => {
+        const response = await authAxios.post("/admin/medicines", data);
+        return response.data;
+      },
+      putMedicine: async (id: string, data: Omit<IMedicine, "id">) => {
+        const response = await authAxios.put(`/admin/medicines/${id}`, data);
+        return response.data;
+      },
+      deleteMedicine: async (id: string) => {
+        const response = await authAxios.delete(`/admin/medicines/${id}`);
+        return response.data;
+      },
+      populateTable: async () => {
+        const response = await authAxios.post("/admin/populate-medicines");
+        return response.data;
+      },
+    },
+    symptoms: {
+      getAllSymptom: async ({
+        limit = 20,
+        page = 1,
+        ...data
+      }: {
+        limit?: number;
+        page?: number;
+        search?: string;
+        sort?: string;
+        type?: string;
+      }) => {
+        const query = createQueryString({
+          limit,
+          page,
+          ...data,
+        });
+        const response = await authAxios.get<IPaginatedApiResponse<ISymptom>>(
+          `/admin/symptoms?${query}`,
+        );
+        return response.data;
+      },
+      postSymptom: async (data: Omit<ISymptom, "id">) => {
+        const response = await authAxios.post("/admin/symptoms", data);
+        return response.data;
+      },
+      putSymptom: async (id: string, data: Omit<ISymptom, "id">) => {
+        const response = await authAxios.put(`/admin/symptoms/${id}`, data);
+        return response.data;
+      },
+      deleteSymptom: async (id: string) => {
+        const response = await authAxios.delete(`/admin/symptoms/${id}`);
+        return response.data;
+      },
+      populateTable: async () => {
+        const response = await authAxios.post("/admin/populate-symptoms");
+        return response.data;
+      },
+    },
+    icds: {
+      getAllIcd: async ({
+        type = "",
+        limit = 20,
+        page = 1,
+        ...data
+      }: {
+        limit?: number;
+        page?: number;
+        search?: string;
+        sort?: string;
+        type?: string;
+      }) => {
+        const query = createQueryString({
+          limit,
+          page,
+          ...data,
+        });
+        const response = await authAxios.get<IPaginatedApiResponse<ISymptom>>(
+          `/admin/icds?${query}`,
+        );
+        return response.data;
+      },
+      postIcd: async (data: Omit<IMedicine, "id">) => {
+        const response = await authAxios.post("/admin/icds", data);
+        return response.data;
+      },
+      putIcd: async (id: string, data: Omit<IMedicine, "id">) => {
+        const response = await authAxios.put(`/admin/icds/${id}`, data);
+        return response.data;
+      },
+      deleteIcd: async (id: string) => {
+        const response = await authAxios.delete(`/admin/icds/${id}`);
+        return response.data;
+      },
+      populateTable: async () => {
+        const response = await authAxios.post("/admin/populate-icds");
+        return response.data;
+      },
+    },
+    helpSupport: {
+      getAllIssues: async ({
+        type = "",
+        limit = 20,
+        page = 1,
+        ...data
+      }: {
+        limit?: number;
+        page?: number;
+        search?: string;
+        sort?: string;
+        type?: string;
+        userType?: string;
+      }) => {
+        const query = createQueryString({
+          limit,
+          page,
+          ...data,
+        });
+        const response = await authAxios.get(`/admin/issues?${query}`);
+        return response.data;
+      },
+      getAllFeedback: async ({
+        limit = 20,
+        page = 1,
+        ...data
+      }: {
+        limit?: number;
+        page?: number;
+        search?: string;
+        sort?: string;
+        type?: string;
+        userType?: string;
+      }) => {
+        const query = createQueryString({
+          limit,
+          page,
+          ...data,
+        });
+        const response = await authAxios.get(`/admin/feedback?${query}`);
+        return response.data;
+      },
+      postToggleIssue: async (id: string) => {
+        const response = await authAxios.patch(`/admin/toggle-issue/${id}`);
+        return response.data;
+      },
     },
     settings: {
       uploadProfilePicture: async (data: FormData) => {

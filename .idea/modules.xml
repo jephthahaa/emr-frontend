@@ -2,8 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/../zomujo-emr-backend/.idea/zomujo-emr-backend.iml" filepath="$PROJECT_DIR$/../zomujo-emr-backend/.idea/zomujo-emr-backend.iml" />
-      <module fileurl="file://$PROJECT_DIR$/.idea/zomujo-emr-pat.iml" filepath="$PROJECT_DIR$/.idea/zomujo-emr-pat.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/emr-frontend.iml" filepath="$PROJECT_DIR$/.idea/emr-frontend.iml" />
     </modules>
   </component>
 </project>

@@ -7,6 +7,9 @@ import { DASHBOARDMENUTABS, SERVICE_MODE, isServiceMode } from "@/constants";
 import { HelpCircleIcon, Settings03Icon } from "@/assets/icons";
 import SidebarControls from "./sidebarControls";
 import DirectMessagesView from "./directMessagesView";
+import { cn } from "@/utils";
+import Dialog from "@/components/misc/dialog";
+import HelpAndSupportDialog from "@/components/helpsupport/helpAndSupportDialog";
 
 const Sidebar = () => {
   return (
@@ -33,11 +36,21 @@ const Sidebar = () => {
               Help & Settings
             </p>
             <div className="flex flex-col">
-              <SidebarItem
-                Icon={HelpCircleIcon}
-                label="Help & Support"
-                link="/help"
-              />
+              <Dialog dialogChild={HelpAndSupportDialog} disableOutsideClick>
+                <button
+                  className={cn(
+                    "relative flex h-11 flex-row gap-2 rounded-lg p-3",
+                  )}
+                >
+                  <HelpCircleIcon
+                    className={cn("h-[18px] w-[18px]", "text-gray-500")}
+                  />
+                  <p className={cn("text-sm font-medium", "text-gray-500")}>
+                    Help & Support
+                  </p>
+                </button>
+              </Dialog>
+
               <SidebarItem
                 Icon={Settings03Icon}
                 label="Settings"

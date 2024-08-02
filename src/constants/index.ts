@@ -11,6 +11,8 @@ import {
   UserCircleIcon,
   ChartHistogram,
   Share01Icon,
+  UserLove02,
+  MedicalCircle,
 } from "@/assets/icons";
 
 import { Calendar03Icon } from "@/assets/icons/Calendar03Icon";
@@ -141,6 +143,16 @@ export const ADMIN_MENUTABS = [
     Icon: Money02Icon,
     label: "Transactions",
     link: "/transactions",
+  },
+  {
+    Icon: MedicalCircle,
+    label: "Manage S,M,I",
+    link: "/manage-smi",
+  },
+  {
+    Icon: UserLove02,
+    label: "Customer Support",
+    link: "/customer-support",
   },
 ];
 
@@ -362,6 +374,17 @@ export const COMMON_COMPLAINTS = [
   "Cough",
   "Sore Throat",
   "Nausea",
+];
+
+export const SYMPTOMS_TYPES = [
+  "Neurological",
+  "Cardiovascular",
+  "Respiratory",
+  "Gastrointestinal",
+  "Genitourinary",
+  "Musculoskeletal",
+  "Integumentary",
+  "Endocrine",
 ];
 
 export const SYMPOTOMS = [

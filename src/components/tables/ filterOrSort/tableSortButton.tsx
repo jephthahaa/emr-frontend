@@ -23,8 +23,10 @@ import { usePathname, useRouter, useSearchParams } from "next/navigation";
 
 export function TableSortButton({
   options = [],
+  orderPos = "right",
 }: {
   options?: { value: string; label: string }[];
+  orderPos?: "right" | "left";
 }) {
   const router = useRouter();
   const pathname = usePathname();
@@ -63,6 +65,27 @@ export function TableSortButton({
 
   return (
     <div className="flex flex-row gap-2">
+      {orderPos === "left" && (
+        <Button
+          disabled={value === "."}
+          onClick={() => {
+            if (value === ".") return;
+            setValue((prev) => {
+              const [column, dir] = prev.split(".");
+
+              if (dir === "ASC") {
+                return `${column}.DESC`;
+              } else {
+                return `${column}.ASC`;
+              }
+            });
+          }}
+          variant="outline"
+          className="h-9 w-[60px] bg-transparent px-0"
+        >
+          {value.split(".")[1]}
+        </Button>
+      )}
       <Popover open={open} onOpenChange={setOpen}>
         <PopoverTrigger asChild>
           <Button
@@ -76,7 +99,7 @@ export function TableSortButton({
         </PopoverTrigger>
         <PopoverContent align="end" className="w-[200px] p-0">
           <Command>
-            <CommandInput placeholder="filter by..." />
+            <CommandInput placeholder="Sort by..." />
             <CommandEmpty>No option found.</CommandEmpty>
             <CommandList>
               {options.map((framework) => {
@@ -108,25 +131,27 @@ export function TableSortButton({
           </Command>
         </PopoverContent>
       </Popover>
-      <Button
-        disabled={value === "."}
-        onClick={() => {
-          if (value === ".") return;
-          setValue((prev) => {
-            const [column, dir] = prev.split(".");
+      {orderPos === "right" && (
+        <Button
+          disabled={value === "."}
+          onClick={() => {
+            if (value === ".") return;
+            setValue((prev) => {
+              const [column, dir] = prev.split(".");
 
-            if (dir === "ASC") {
-              return `${column}.DESC`;
-            } else {
-              return `${column}.ASC`;
-            }
-          });
-        }}
-        variant="outline"
-        className="h-9 w-[60px] bg-transparent px-0"
-      >
-        {value.split(".")[1]}
-      </Button>
+              if (dir === "ASC") {
+                return `${column}.DESC`;
+              } else {
+                return `${column}.ASC`;
+              }
+            });
+          }}
+          variant="outline"
+          className="h-9 w-[60px] bg-transparent px-0"
+        >
+          {value.split(".")[1]}
+        </Button>
+      )}
     </div>
   );
 }

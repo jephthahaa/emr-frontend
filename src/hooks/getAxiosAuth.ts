@@ -42,7 +42,7 @@ export const getServerSideAxios = () => {
         error?.response?.status === 403 ||
         error?.response?.data.message?.includes("Forbidden")
       ) {
-        redirect("/login");
+        redirect("?sessionExpired=true");
       }
       return Promise.reject(error);
     },

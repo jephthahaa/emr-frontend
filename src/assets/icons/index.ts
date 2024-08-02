@@ -42,3 +42,5 @@ export { default as UserCircleIcon } from "./UserCircleIcon";
 export { default as BankIcon } from "./BankIcon";
 export { default as ChartHistogram } from "./ChartHistogram";
 export { default as Megaphone02 } from "./Megaphone02";
+export { default as UserLove02 } from "./UserLove02";
+export { default as MedicalCircle } from "./MedicalCircle";

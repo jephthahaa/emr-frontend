@@ -37,7 +37,7 @@ const CONSULTATION_NOTES_TABS = [
   },
 ];
 
-const ConsultationNotes = () => {
+const ConsultationNotes = ({ patientId }: { patientId: string }) => {
   const [selectedView, setSelectedView] = useState(
     CONSULTATION_NOTES_TABS[0].value,
   );
@@ -79,8 +79,8 @@ const ConsultationNotes = () => {
       </div>
       {
         {
-          all: <AllView />,
-          notes: <AllView />,
+          all: <AllView patientId={patientId} />,
+          notes: <AllView patientId={patientId} />,
           "lab-requests": <LabRequests />,
         }[selectedView]
       }

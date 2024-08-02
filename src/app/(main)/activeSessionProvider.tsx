@@ -4,7 +4,7 @@ import Dialog from "@/components/misc/dialog";
 import { useAppDispatch, useAppSelector } from "@/hooks";
 import { action } from "@/redux";
 import { useSession } from "next-auth/react";
-import { usePathname, useRouter } from "next/navigation";
+import { usePathname, useRouter, useSearchParams } from "next/navigation";
 import React, { useEffect } from "react";
 
 export default function ActiveSessionProvider({
@@ -12,6 +12,8 @@ export default function ActiveSessionProvider({
 }: {
   children: React.ReactNode;
 }) {
+  const sessionExpiredParam =
+    useSearchParams().get("sessionExpired") || "false";
   const session = useSession();
   const dispatch = useAppDispatch();
   const { sessionExpired } = useAppSelector((state) => state.authentication);
@@ -21,6 +23,12 @@ export default function ActiveSessionProvider({
       dispatch(action.authentication.setSessionExpired(true));
     }
   }, [session.status, dispatch]);
+
+  useEffect(() => {
+    if (sessionExpiredParam === "true") {
+      dispatch(action.authentication.setSessionExpired(true));
+    }
+  }, [sessionExpiredParam, dispatch]);
 
   return (
     <>

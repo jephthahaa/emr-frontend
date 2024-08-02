@@ -426,6 +426,13 @@ export type IAppointmentRequestShowDialog =
     }
   | undefined;
 
+export type ISMIShowDialog<T> =
+  | {
+      data: T;
+      type: "edit" | "delete";
+    }
+  | undefined;
+
 export type IMedicalRecordRequest = {
   id: string;
   createdAt: string;
@@ -598,3 +605,32 @@ export type IMedicine = {
 
 export type IGetSymptoms = IPaginatedApiResponse<ISymptom>;
 export type IGetMedicines = IPaginatedApiResponse<IMedicine>;
+
+export type IIssue = {
+  id: string;
+  name: string;
+  status: "open" | "fixed";
+  description: string;
+  userType: "patient" | "doctor";
+  createdAt: Date;
+  user: {
+    id: string;
+    firstName: string;
+    lastName: string;
+    profilePicture: string;
+  };
+};
+
+export type IFeedback = {
+  id: string;
+  type: string;
+  comment: string;
+  userType: "patient" | "doctor";
+  createdAt: Date;
+  user: {
+    id: string;
+    firstName: string;
+    lastName: string;
+    profilePicture: string;
+  };
+};

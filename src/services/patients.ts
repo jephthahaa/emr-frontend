@@ -1,6 +1,7 @@
 import {
   IApiResponse,
   IAppointmentRequest,
+  IConsultationNote,
   IDoctor,
   IGetAppointmentSlotData,
   IGetCheckReview,
@@ -226,6 +227,25 @@ export function patientsRoutes(authAxios: AxiosInstance) {
     patchReview: async (id: string, data: IReviewSchema) => {
       const response = await authAxios.patch(`/patients/reviews/${id}`, data);
       return response.data;
+    },
+    records: {
+      getConsultationNotes: async (
+        id: string,
+        {
+          limit = 3,
+          page = 1,
+          search = "",
+        }: {
+          limit?: number;
+          page?: number;
+          search?: string;
+        },
+      ) => {
+        const response = await authAxios.get<
+          IPaginatedApiResponse<IConsultationNote>
+        >(`/patients/records/notes?limit=${limit}&page=${page}`);
+        return response.data;
+      },
     },
     settings: {
       editProfile: async () => {

@@ -3,14 +3,20 @@ import useZomujoApi from "@/services/zomujoApi";
 import { useQuery } from "@tanstack/react-query";
 import ConsultationNoteItem from "@/components/patients/patientsDetails/views/patientOverview/components/consultationNoteItem";
 import { useParams } from "next/navigation";
+import { isServiceMode } from "@/constants";
 
-const AllView = () => {
-  const { id } = useParams<{ id: string }>();
-  const { getPatientConsultationNotes } = useZomujoApi(false).doctors.records;
+const AllView = ({ patientId }: { patientId: string }) => {
+  const id = useParams<{ id: string }>().id ?? patientId;
+  const { doctors, patients } = useZomujoApi(false);
 
   const { data, isLoading } = useQuery({
     queryKey: ["patients", "consultation-Notes", id],
-    queryFn: () => getPatientConsultationNotes(id, { limit: 10 }),
+    queryFn: () => {
+      if (isServiceMode("DOCTOR")) {
+        return doctors.records.getPatientConsultationNotes(id, { limit: 10 });
+      }
+      return patients.records.getConsultationNotes(id, { limit: 10 });
+    },
   });
 
   return (

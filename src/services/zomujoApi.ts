@@ -7,8 +7,10 @@ import { SERVICE_MODE } from "@/constants";
 import {
   IApiResponse,
   IBroadcast,
+  IFeedback,
   IGetActiveConsultation,
   IGetDoctorDetails,
+  IIssue,
   IMessege,
   IPaginatedApiResponse,
   IPostPayment,
@@ -73,7 +75,9 @@ const useZomujoApi = (server = false) => {
     },
     getUserDetails: async () => {
       const response = await authAxios.get<IGetDoctorDetails>(
-        `/${SERVICE_MODE.toLowerCase()}s/me`,
+        SERVICE_MODE === "ADMIN"
+          ? "/admin/me"
+          : `/${SERVICE_MODE.toLowerCase()}s/me`,
       );
       return response.data.data;
     },
@@ -132,6 +136,22 @@ const useZomujoApi = (server = false) => {
       verify: async (data: { reference: string; doctorId: string }) => {
         const response = await authAxios.post<IPostPaymentVerify>(
           "/payments/verify",
+          data,
+        );
+        return response.data;
+      },
+    },
+    helpSupport: {
+      postIssue: async (data: { name: string; description: string }) => {
+        const response = await authAxios.post<IPaginatedApiResponse<IIssue>>(
+          `/${SERVICE_MODE.toLowerCase()}s/issues`,
+          data,
+        );
+        return response.data;
+      },
+      postFeedback: async (data: { type: string; comment: string }) => {
+        const response = await authAxios.post<IPaginatedApiResponse<IFeedback>>(
+          `/${SERVICE_MODE.toLowerCase()}s/feedback`,
           data,
         );
         return response.data;

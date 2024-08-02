@@ -94,7 +94,7 @@ const PatientOverview = ({ patient }: { patient: IPatient }) => {
           </div>
         </div>
       </div>
-      <ConsultationNotes />
+      <ConsultationNotes patientId={patient.id} />
     </main>
   );
 };

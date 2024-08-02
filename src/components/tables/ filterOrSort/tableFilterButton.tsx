@@ -26,11 +26,13 @@ export function TableFilterButton({
   label = "Filter by",
   keyParam = "filter",
   multiple = false,
+  className = "",
 }: {
   options?: { value: string; label: string }[];
   label?: string;
   keyParam?: string;
   multiple?: boolean;
+  className?: string;
 }) {
   const router = useRouter();
   const pathname = usePathname();
@@ -83,7 +85,10 @@ export function TableFilterButton({
             variant="outline"
             role="combobox"
             aria-expanded={open}
-            className="bg-gray-10 flex h-9 w-[110px] flex-row items-center justify-between gap-1.5 rounded-md border border-gray-300 px-3 py-2"
+            className={cn(
+              "bg-gray-10 flex h-9 w-[110px] flex-row items-center justify-between gap-1.5 rounded-md border border-gray-300 px-3 py-2",
+              className,
+            )}
           >
             {filterLabel(value, label)}
           </Button>

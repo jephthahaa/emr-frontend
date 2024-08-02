@@ -151,8 +151,7 @@ export function doctorsRoutes(authAxios: AxiosInstance) {
     records: {
       postStartConsultation: async (data: { patientId: string }) => {
         const response = await authAxios.post<IPostStartConsultation>(
-          "/doctors/consultations/start",
-          data,
+          `/doctors/consultations/start/${data.patientId}`,
         );
         return response.data;
       },
