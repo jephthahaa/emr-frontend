@@ -20,9 +20,9 @@ const Button = ({
       <div
         className={cn(
           "group flex h-10 w-full overflow-clip rounded-lg p-[1.5px] outline disabled:opacity-80",
-          "bg-gradient-to-t from-primaryLightBase to-[#96D2B9] outline-primary",
+          "bg-gradient-to-t from-primaryLightBase to-[#96B7D2] outline-primary",
           !props.disabled &&
-            "hover:from-[#067458] hover:to-[#BAE0D1] hover:outline-primaryDark",
+            "hover:from-[#064374] hover:to-[#BACFE0] hover:outline-primaryDark",
           props.disabled && "opacity-80 disabled:cursor-not-allowed",
           props.className,
         )}

@@ -112,11 +112,11 @@ const config: Config = {
         // dark mode
         baseBlack: "#151515",
         baseWhite: "#FFFFFF",
-        primary: "#07926F",
-        primaryDark: "#067458",
-        primaryLight: "#F0F9F7",
-        primaryLightBase: "#08AF85",
-        primaryLightLight: "#F4FBF9",
+        primary: "#075392",
+        primaryDark: "#064374",
+        primaryLight: "#F0F5F9",
+        primaryLightBase: "#0864AF",
+        primaryLightLight: "#F4F8FB",
         background: "#FAFAFA",
         error: {
           50: "#FEF2F2",

@@ -31,7 +31,7 @@ const GettingStartedCard = () => {
   return (
     <div
       className={cn(
-        "relative hidden w-full flex-col items-center justify-center gap-6 rounded-lg bg-gradient-to-t from-teal-800 to-emerald-500 px-5 py-4",
+        "relative hidden w-full flex-col items-center justify-center gap-6 rounded-lg bg-gradient-to-t from-[#113B5E] to-[#106DB9] px-5 py-4",
         filledPercent === 100 ? "hidden" : "flex",
       )}
     >

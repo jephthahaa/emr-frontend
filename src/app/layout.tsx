@@ -4,9 +4,9 @@ import Providers from "./providers";
 import { SERVICE_MODE } from "@/constants";
 
 const title = {
-  ADMIN: "Zyptyk EMR Admin Dashboard",
-  PATIENT: "Zyptyk EMR - Patient Portal",
-  DOCTOR: "Zyptyk EMR - Doctor Portal",
+  ADMIN: "ZMR Admin Dashboard",
+  PATIENT: "ZMR - Patient Portal",
+  DOCTOR: "ZMR - Doctor Portal",
 };
 
 export const metadata = {

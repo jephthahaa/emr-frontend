@@ -46,7 +46,7 @@ const LoadingProgressBar = ({
   return (
     <ProgressBar
       progress={progress}
-      color="#067458"
+      color="#064374"
       className={cn(className, showBar ? "opacity-100" : "opacity-0")}
     />
   );

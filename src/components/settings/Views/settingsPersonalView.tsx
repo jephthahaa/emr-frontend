@@ -201,7 +201,7 @@ const SettingsPersonalView = () => {
             <div className="flex flex-1 flex-col">
               <Input
                 label="Email"
-                placeholder="micheal@Zyptyk.com"
+                placeholder="micheal@ZMR.com"
                 {...register("email", { required: true })}
               />
             </div>

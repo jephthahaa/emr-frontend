@@ -20,7 +20,7 @@ const PersonalDetailsStep = () => {
           </span>
         </p>
         <p className="leading-6 text-[#6B7280]">
-          Provide your personal details for a personalized Zyptyk experience
+          Provide your personal details for a personalized ZMR experience
           tailored to your preferences.
         </p>
       </div>

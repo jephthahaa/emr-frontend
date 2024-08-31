@@ -1,4 +1,4 @@
-### ZYPTYK EMR Checklist
+### ZMR EMR Checklist
 
 #### Clients Section
 
@@ -68,7 +68,7 @@ Allow viewing of requested lab tests through a simple interface
 Facilitate secure transmission of lab results to the doctor with notifications
 Allow clients to view and download prescribed medications as PDF with:
 Doctor’s signature
-Zyptyk watermark
+ZMR watermark
 Provide explanations or follow-up instructions for lab results
 
 **Follow-up Care**
@@ -175,4 +175,4 @@ Implement ticketing system
 Collect user feedback
 Engage with users for platform updates
 
-This checklist covers the key features and functionalities outlined in the document for the ZYPTYK EMR platform.
+This checklist covers the key features and functionalities outlined in the document for the ZMR EMR platform.

@@ -4,7 +4,7 @@ import { Button as ShadButton } from "@/components/ui/button";
 import { StepOneView, StepThreeView, StepTwoView } from "./views";
 import { cn } from "@/utils";
 import Image from "next/image";
-import { ZyptykLogo } from "@/assets/images";
+import { ZMRLogo } from "@/assets/images";
 import { useMutation } from "@tanstack/react-query";
 import useZomujoApi from "@/services/zomujoApi";
 import { useAppSelector } from "@/hooks";
@@ -30,7 +30,7 @@ const ConsultationReview = () => {
   });
   return (
     <div className="relative flex h-screen w-screen flex-col items-center overflow-y-scroll bg-white">
-      <Image src={ZyptykLogo} className="my-14 h-14 w-14" alt="Zyptyk Logo" />
+      <Image src={ZMRLogo} className="my-14 h-14 w-14" alt="ZMR Logo" />
       <div
         className={cn(
           "flex flex-col rounded-2xl border border-gray-200 p-8",

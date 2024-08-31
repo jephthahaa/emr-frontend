@@ -56,12 +56,12 @@ export const LoginForm = () => {
       className="w-full max-w-[405px] p-4 sm:p-10"
       onSubmit={handleSubmit(onSubmit)}
     >
-      <Image src="/icon-512x512.png" width={44} height={44} alt="Zyptyk-logo" />
+      <Image src="/icon-512x512.png" width={44} height={44} alt="ZMR-logo" />
 
       <div className="space-y-5 2xl:space-y-[32px]">
         <legend className="mt-6 2xl:mt-[42px] 2xl:space-y-[18px]">
           {isServiceMode("PATIENT") && (
-            <h4 className="text-3xl font-bold">Welcome to Zyptyk 😁</h4>
+            <h4 className="text-3xl font-bold">Welcome to ZMR 😁</h4>
           )}
           {isServiceMode("DOCTOR") && (
             <h4 className="text-3xl font-bold">Welcome back Dr. 😁</h4>

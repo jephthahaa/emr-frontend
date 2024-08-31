@@ -1,5 +1,5 @@
 "use client";
-import { ZyptykLogo } from "@/assets/images";
+import { ZMRLogo } from "@/assets/images";
 import Image from "next/image";
 import React from "react";
 import SidebarItem from "./sidebarItem";
@@ -15,7 +15,7 @@ const Sidebar = () => {
   return (
     <aside className="flex h-screen w-[264px] shrink-0 flex-col justify-between p-4">
       <div>
-        <Image src={ZyptykLogo} className="mb-9 h-11 w-11" alt="Zyptyk logo" />
+        <Image src={ZMRLogo} className="mb-9 h-11 w-11" alt="ZMR logo" />
         <div className="flex flex-col gap-8">
           <div className="flex flex-col gap-4">
             <p className="text-sm font-medium uppercase text-gray-400">Menu</p>

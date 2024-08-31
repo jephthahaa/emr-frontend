@@ -32,7 +32,7 @@ export const SignUpForm = () => {
           src="/icon-512x512.png"
           width={44}
           height={44}
-          alt="Zyptyk-logo"
+          alt="ZMR-logo"
         />
 
         <div className="space-y-5 2xl:space-y-[32px]">
@@ -74,7 +74,7 @@ export const SignUpForm = () => {
             <Input
               label="Email"
               id="email"
-              placeholder="Zyptyk@gmail.com"
+              placeholder="ZMR@gmail.com"
               {...register("email", { required: "Email is required" })}
             />
             {errors.email && (

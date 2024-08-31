@@ -1,0 +1,48 @@
+# FROM oven/bun
+
+# WORKDIR /app
+
+# COPY . .
+
+# ARG SERVICE_MODE
+# ARG URL
+
+# ENV NODE_ENV=production \
+#     NEXT_PUBLIC_API_URL=http://localhost:9000 \
+#     NEXT_PUBLIC_SERVICE_MODE=$SERVICE_MODE \
+#     NEXTAUTH_SECRET=mYVHbltlMgS5Q6sRi9RQZPGUiSS+ukRou2fzVZN5 \
+#     NEXTAUTH_URL=$URL
+    
+# RUN bun run build
+
+# EXPOSE 3000
+
+# CMD ["bun", "run", "start"]
+
+FROM oven/bun
+
+WORKDIR /app
+
+ARG SERVICE_MODE
+ARG URL
+
+# Copy package.json + package-lock.json
+COPY package*.json ./
+
+# Install dependencies
+RUN bun install
+
+ENV NODE_ENV=production \
+    NEXT_PUBLIC_API_URL=http://localhost:9000 \
+    NEXT_PUBLIC_SERVICE_MODE=$SERVICE_MODE \
+    NEXTAUTH_SECRET=mYVHbltlMgS5Q6sRi9RQZPGUiSS+ukRou2fzVZN5 \
+    NEXTAUTH_URL=$URL
+    
+# Copy the rest of the application
+COPY . .
+
+RUN bun --bun run build
+
+EXPOSE 3000
+# Start the dev server
+CMD ["bun", "--bun", "run", "start"]

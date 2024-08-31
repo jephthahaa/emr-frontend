@@ -1,4 +1,4 @@
-import { ZyptykLogo } from "@/assets/images";
+import { ZMRLogo } from "@/assets/images";
 import Button from "@/components/misc/button";
 import { ChevronLeft } from "lucide-react";
 import Image from "next/image";
@@ -30,7 +30,7 @@ const DoctorsKycStep = () => {
           <ChevronLeft size={18} /> Back
         </Button>
         <Image
-          src={ZyptykLogo}
+          src={ZMRLogo}
           className="absolute left-1/2 top-1/2 h-11 w-11 -translate-x-1/2 -translate-y-1/2"
           alt="Zyptyk Logo"
         />

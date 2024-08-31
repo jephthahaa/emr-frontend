@@ -1,5 +1,5 @@
 "use client";
-import { ZyptykLogo } from "@/assets/images";
+import { ZMRLogo } from "@/assets/images";
 import Image from "next/image";
 import React from "react";
 import { ADMIN_MENUTABS, isServiceMode } from "@/constants";
@@ -19,7 +19,7 @@ const Sidebar = () => {
     <aside className="flex h-screen w-[264px] shrink-0 flex-col justify-between bg-white p-4">
       <div>
         <Image
-          src={ZyptykLogo}
+          src={ZMRLogo}
           className="mb-9 h-11 w-11"
           priority
           alt="Zyptyk logo"

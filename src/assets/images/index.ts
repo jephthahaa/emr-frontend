@@ -1,5 +1,5 @@
 export { default as LoginSlide } from "./login-slide.jpeg";
-export { default as ZyptykLogo } from "./zyptyk-logo.png";
+export { default as ZMRLogo } from "./ZMR-logo.png";
 
 export { default as CardGlyph } from "./card-glyph.png";
 export { default as WalletGlyph } from "./wallet-glyph.png";

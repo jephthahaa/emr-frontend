@@ -110,7 +110,7 @@ const SettingsSecurityView = () => {
               </h2>
               <p className="text-sm leading-[28px] text-gray-500">
                 We'll delete your account and data permanently. Thanks for being
-                part of Zyptyk! You're always welcome back if you change your
+                part of ZMR! You're always welcome back if you change your
                 mind.
               </p>
             </div>
