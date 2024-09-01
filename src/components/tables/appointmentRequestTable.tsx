@@ -84,7 +84,7 @@ const AppointmentRequestTable = ({
                     <div className="h-7 w-7 shrink-0 rounded-full  bg-gray-600">
                       <Image
                         className="h-full w-full rounded-full"
-                        src={isUrl(item.patient.id)}
+                        src={isUrl(item.patient.profilePicture)}
                         width={28}
                         height={28}
                         alt="profile"

@@ -10,6 +10,8 @@ import {
   IPaginatedApiResponse,
   IPatient,
   IPatientGetAppointmentRequest,
+  IPatientLab,
+  IPatientPrescription,
 } from "@/types";
 import { IReviewSchema } from "@/types/schema";
 import { createQueryString } from "@/utils";
@@ -213,11 +215,6 @@ export function patientsRoutes(authAxios: AxiosInstance) {
       );
       return response.data;
     },
-
-    addLabPicture: async (id: string) => {
-      const response = await authAxios.get(`/patients/${id}/add-lab`);
-      return response.data;
-    },
     checkPendingReviews: async () => {
       const response = await authAxios.get<IGetCheckReview>(
         "/patients/reviews/check",
@@ -244,6 +241,42 @@ export function patientsRoutes(authAxios: AxiosInstance) {
         const response = await authAxios.get<
           IPaginatedApiResponse<IConsultationNote>
         >(`/patients/records/notes?limit=${limit}&page=${page}`);
+        return response.data;
+      },
+      getAllLabs: async (query: {
+        limit?: number;
+        page?: number;
+        search?: string;
+        status?: string;
+        sort?: string;
+      }) => {
+        const queryStr = createQueryString(query);
+        const response = await authAxios.get<
+          IPaginatedApiResponse<IPatientLab>
+        >(`/patients/labs?${queryStr}`);
+        return response.data;
+      },
+      addLabPicture: async (id: string, data: FormData) => {
+        const response = await authAxios.post(`/patients/${id}/add-lab`, data);
+        return response.data;
+      },
+      deleteLabPicture: async (id: string) => {
+        const response = await authAxios.delete(`/patients/${id}/remove-lab`);
+        return response.data;
+      },
+      getAllPrescriptions: async ({
+        limit = 8,
+        page = 1,
+        ...query
+      }: {
+        limit?: number;
+        page?: number;
+        search?: string;
+      }) => {
+        const queryStr = createQueryString({ limit, page, ...query });
+        const response = await authAxios.get<
+          IPaginatedApiResponse<IPatientPrescription>
+        >(`/patients/prescriptions?${queryStr}`);
         return response.data;
       },
     },

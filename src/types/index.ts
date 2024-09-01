@@ -1,8 +1,8 @@
 import { z } from "zod";
 import { updateDoctorSchema } from "./schema";
+import React from "react";
 export type ButtonVariant = "primary" | "secondary" | "tertiary" | "extra";
 export type ButtonVariantStyle = Record<ButtonVariant | "base", string>;
-export type ButtonDisabledStyle = Record<ButtonVariant, string>;
 
 export type ButtonSize = "sm" | "md" | "wide" | "lg";
 export type ButtonSizeStyle = Record<ButtonSize, string>;
@@ -27,17 +27,6 @@ export type DoctorLoginFormFields = {
   profilePicture: File;
   front: File;
   back: File;
-};
-
-export type DashboardMenuTabProps = {
-  active?: boolean;
-  title: string;
-  link: string;
-  counter?: number;
-  Icon: string;
-  activeIcon?: React.ReactNode;
-  full?: boolean;
-  mobile?: boolean;
 };
 
 export type TableHeader = {
@@ -67,24 +56,6 @@ export type User = {
   username: string;
   displayPicture: string;
   email: string;
-};
-
-type MessageType = "text" | "audio" | "video";
-
-export type Message = {
-  type: MessageType;
-  from: User;
-  to: User;
-  url?: string;
-  text?: string;
-  dateSent: Date;
-};
-
-export type Chat = {
-  id: string;
-  from: User;
-  to: User;
-  messages: Message[];
 };
 
 export type IAppointmentSlot = {
@@ -195,6 +166,7 @@ export type IAppointmentRequest = {
     id: string;
     firstName: string;
     lastName: string;
+    profilePicture: string | null;
   };
   reason: string;
   notes: string;
@@ -459,6 +431,34 @@ export type ILab = {
   fileUrl: string | null;
   notes: string;
   status: "pending" | "completed";
+};
+
+export type IPatientLab = {
+  id: string;
+  lab: string;
+  fileUrl: string;
+  status: "pending" | "completed";
+  notes: string;
+  createdAt: Date;
+  consultationId: string;
+  doctor: {
+    id: string;
+    firstName: string;
+    lastName: string;
+    profilePicture: string;
+  };
+};
+
+export type IPatientPrescription = {
+  id: string;
+  createdAt: string;
+  prescriptionUrl: string;
+  doctor: {
+    id: string;
+    firstName: string;
+    lastName: string;
+    profilePicture: string;
+  };
 };
 
 export type IDiagnosis = {

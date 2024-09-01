@@ -2,8 +2,17 @@
 import { cn } from "@/utils";
 import { PinIcon, Star, StarOff } from "lucide-react";
 import React, { useState } from "react";
+import Chip from "@/components/misc/chip";
 
-const Card = ({ label, tag }: { label: string; tag?: string }) => {
+const Card = ({
+  label,
+  tag,
+  showSuccess = false,
+}: {
+  label: string;
+  tag?: string;
+  showSuccess?: boolean;
+}) => {
   const [pinned, setPinned] = useState(false);
   const [starred, setStarred] = useState(false);
 
@@ -16,33 +25,41 @@ const Card = ({ label, tag }: { label: string; tag?: string }) => {
             {tag}
           </div>
         )}
-        {!tag && <div className="" />}
-        <div className="-mb-1.5 flex flex-row items-center gap-1">
-          <button
-            className="h-6 w-6 rounded-md"
-            onClick={() => setPinned((prev) => !prev)}
-          >
-            <PinIcon
-              className={cn(
-                "h-4 w-4 rotate-45 duration-100",
-                pinned ? "fill-primaryDark text-primaryDark" : "text-gray-300",
-              )}
-            />
-          </button>
-          <button
-            className="h-6 w-6 rounded-md"
-            onClick={() => setStarred((prev) => !prev)}
-          >
-            {starred ? (
-              <Star
+        <div className="-mb-1.5 flex w-full flex-row items-center justify-between gap-1">
+          {showSuccess ? (
+            <Chip text="Completed" varient="green" />
+          ) : (
+            <div></div>
+          )}
+          <div className=" flex flex-row items-center gap-1">
+            <button
+              className="h-6 w-6 rounded-md"
+              onClick={() => setPinned((prev) => !prev)}
+            >
+              <PinIcon
                 className={cn(
-                  "h-4 w-4 fill-warning-400 text-warning-400 duration-100",
+                  "h-4 w-4 rotate-45 duration-100",
+                  pinned
+                    ? "fill-primaryDark text-primaryDark"
+                    : "text-gray-300",
                 )}
               />
-            ) : (
-              <StarOff className={cn("h-4 w-4 text-gray-300")} />
-            )}
-          </button>
+            </button>
+            <button
+              className="h-6 w-6 rounded-md"
+              onClick={() => setStarred((prev) => !prev)}
+            >
+              {starred ? (
+                <Star
+                  className={cn(
+                    "h-4 w-4 fill-warning-400 text-warning-400 duration-100",
+                  )}
+                />
+              ) : (
+                <StarOff className={cn("h-4 w-4 text-gray-300")} />
+              )}
+            </button>
+          </div>
         </div>
       </div>
     </div>

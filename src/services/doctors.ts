@@ -12,6 +12,7 @@ import {
   ILab,
   IPaginatedApiResponse,
   IPatient,
+  IPatientLab,
   IPostAppointmentSlot,
   IPostStartConsultation,
   IPrescription,
@@ -269,10 +270,33 @@ export function doctorsRoutes(authAxios: AxiosInstance) {
         );
         return response.data;
       },
-      getPatientLabs: async (id: string) => {
+      getPatientLabs: async (
+        id: string,
+        query?: {
+          consultationId?: string;
+          status?: "completed" | "pending";
+        },
+      ) => {
+        const queryStr = createQueryString(query);
         const response = await authAxios.get<IPaginatedApiResponse<ILab>>(
-          `/doctors/labs/${id}`,
+          `/doctors/labs/${id}?${queryStr}`,
         );
+        return response.data;
+      },
+      getLabs: async (
+        id: string,
+        query: {
+          limit?: number;
+          page?: number;
+          search?: string;
+          status?: string;
+          sort?: string;
+        },
+      ) => {
+        const queryStr = createQueryString(query);
+        const response = await authAxios.get<
+          IPaginatedApiResponse<IPatientLab>
+        >(`/doctors/patient-labs/${id}?${queryStr}`);
         return response.data;
       },
       postLab: async (data: {
@@ -289,6 +313,10 @@ export function doctorsRoutes(authAxios: AxiosInstance) {
         consultationId: string;
       }) => {
         const response = await authAxios.post("/doctors/request-labs", data);
+        return response.data;
+      },
+      removeLab: async (id: string) => {
+        const response = await authAxios.delete(`/doctors/labs/${id}`);
         return response.data;
       },
       addComplaint: async () => {
@@ -383,6 +411,19 @@ export function doctorsRoutes(authAxios: AxiosInstance) {
         const query = createQueryString(data);
         const response = await authAxios.get<IGetMedicines>(
           `/doctors/medicines?${query}`,
+        );
+        return response.data;
+      },
+      checkSignature: async () => {
+        const response = await authAxios.get<IApiResponse<undefined>>(
+          "/doctors/check-signature",
+        );
+        return response.data;
+      },
+      uploadSignature: async (data: FormData) => {
+        const response = await authAxios.post(
+          "/doctors/upload-signature",
+          data,
         );
         return response.data;
       },

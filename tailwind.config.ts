@@ -26,13 +26,13 @@ const config: Config = {
       },
       backgroundImage: {
         transparentPrimaryGradient:
-          "linear-gradient(to bottom, #033A2C00 7%, #033A2CFF 70%, #033A2C 75%)",
+          "linear-gradient(to bottom, #033A2C00 7%, #03213A 70%, #03213A 75%)",
         primaryGradient:
-          "linear-gradient(3.01deg, #3A6C82 7.18%, #3FAB85 97.48%)",
+          "linear-gradient(3.01deg, #3A6282 7.18%, #3F7AAB 97.48%)",
         primaryGradient2:
-          "linear-gradient(to bottom, #08AF85 7.18%, #256A5C 97.48%)",
+          "linear-gradient(to bottom, #0864AF 7.18%, #254B6A 97.48%)",
         primaryGradientUndo:
-          "linear-gradient(3.01deg, #033A2C 7.18%, #033A2C 97.48%)",
+          "linear-gradient(3.01deg, #03213A 7.18%, #03213A 97.48%)",
       },
       blur: {
         sm: "4px",

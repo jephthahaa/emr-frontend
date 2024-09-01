@@ -5,6 +5,7 @@ import { LoginSlide } from "@/assets/images";
 import React from "react";
 import { cn } from "@/utils";
 import { isServiceMode } from "@/constants";
+import Image from "next/image";
 
 export const dynamic = "force-dynamic";
 export const fetchCache = "force-no-store";
@@ -19,17 +20,17 @@ export default function Login() {
       )}
     >
       <div
-        style={{
-          backgroundImage: `url(${LoginSlide.src})`,
-          backgroundSize: "cover",
-          backgroundPosition: "center",
-          backgroundRepeat: "no-repeat",
-        }}
         className={cn(
-          "hidden h-full w-1/2 flex-col justify-end overflow-clip rounded-[22px] bg-gray-400 lg:flex",
+          "relative hidden h-full w-1/2 flex-col justify-end overflow-clip rounded-[22px] bg-gray-400 lg:flex",
         )}
       >
-        <div className="w-full space-y-6 bg-transparentPrimaryGradient px-7 py-20 text-white 2xl:px-10 2xl:py-24">
+        <Image
+          src={LoginSlide}
+          className="absolute z-0 h-full w-full object-cover object-center"
+          alt={"login slide"}
+          layout="fill"
+        />
+        <div className="z-10 w-full space-y-6 bg-transparentPrimaryGradient px-7 py-20 text-white 2xl:px-10 2xl:py-24">
           <h3 className="text-4xl font-bold">
             Elevate patient care with seamless access to their health data.
           </h3>
@@ -46,7 +47,7 @@ export default function Login() {
         </div>
 
         <div className="mt-5 flex flex-col justify-center px-4 text-center text-sm sm:flex-row sm:gap-6">
-          <p className="text-sm">© 2024 Zyptyk. All rights reserved.</p>
+          <p className="text-sm">© 2023 Zyptyk. All rights reserved.</p>
 
           <div className="space-x-1 text-primaryDark">
             <Link href="/">Terms & Conditions</Link>

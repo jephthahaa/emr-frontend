@@ -40,7 +40,11 @@ const PatientDetailsView = () => {
     <section className="relative flex flex-1 flex-row">
       {recordStatus !== "approved" && (
         <div className="absolute left-0 top-0 z-30 flex h-[calc(100vh-133px-32px)] w-full items-center justify-center bg-white/70 backdrop-blur-md">
-          {checkRecordLoading && <LoadingSpinner size={48} stroke={4} />}
+          {checkRecordLoading && (
+            <div className="flex h-full w-full items-center justify-center">
+              <LoadingSpinner size={48} stroke={4} />
+            </div>
+          )}
           {recordStatus && (
             <PatientDetailsRecordStatusModal recordStatus={recordStatus} />
           )}
@@ -53,7 +57,11 @@ const PatientDetailsView = () => {
               <p>There was an error fetching patient data</p>
             </div>
           )}
-          {patientLoading && <LoadingSpinner size={48} stroke={4} />}
+          {patientLoading && (
+            <div className="flex h-full w-full items-center justify-center">
+              <LoadingSpinner size={48} stroke={4} />
+            </div>
+          )}
           {patientData && !patientError && (
             <>
               <PatientsDetailsSidebar />

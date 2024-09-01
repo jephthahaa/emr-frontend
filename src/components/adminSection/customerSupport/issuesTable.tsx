@@ -10,7 +10,7 @@ import {
 } from "@/components/ui/table";
 import { ChevronsUpDown } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { IIssue, ITransaction } from "@/types";
+import { IIssue } from "@/types";
 import { isUrl } from "@/utils";
 import Chip from "@/components/misc/chip";
 import { format } from "date-fns";

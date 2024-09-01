@@ -17,7 +17,7 @@ const DoctorsHomeView = () => {
           <div className="h-10 w-10 rounded-full bg-gray-600">
             <Image
               className="h-full w-full rounded-full"
-              src={isUrl(session?.user.doctor.profilePicture)}
+              src={isUrl(session?.user.doctor?.profilePicture)}
               width={40}
               height={40}
               alt="profile"

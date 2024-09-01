@@ -2,6 +2,7 @@
 import { cn } from "@/utils";
 import { PinIcon, Star, StarOff, Trash2 } from "lucide-react";
 import React, { useState } from "react";
+import useZomujoApi from "@/services/zomujoApi";
 
 const TempCard = ({
   label,
@@ -16,7 +17,7 @@ const TempCard = ({
   const [starred, setStarred] = useState(false);
 
   return (
-    <div className="flex h-[160px] w-[180px] flex-col justify-between rounded-lg border border-gray-200 bg-gradient-to-b from-[#C5D8FF4E] to-[#C5D8FF99] p-4">
+    <div className="relative flex h-[150px] w-[170px] flex-col justify-between rounded-lg border border-gray-200 bg-gradient-to-b from-[#C5D8FF4E] to-[#C5D8FF99] p-4">
       <div className="flex flex-row items-start justify-between gap-3">
         <p className="text-sm leading-4">{label}</p>
         {onDelete && (

@@ -1,45 +1,28 @@
 import React, { useState } from "react";
-import { Button } from "../ui/button";
-import { useMutation, useQueryClient } from "@tanstack/react-query";
+import { useMutation } from "@tanstack/react-query";
 import useZomujoApi from "@/services/zomujoApi";
 import { Oval } from "react-loader-spinner";
 import toast from "react-hot-toast";
 import { AxiosError } from "axios";
-import { signOut } from "next-auth/react";
-import SingleImageDropzone from "../misc/dropzones/singleFileDropzone";
-import { isServiceMode } from "@/constants";
+import SingleImageDropzone from "@/components/misc/dropzones/singleFileDropzone";
+import { Button } from "@/components/ui/button";
 
-const UploadProfilePictureDialog = ({ onClose }: { onClose: () => void }) => {
-  const queryClient = useQueryClient();
-  const {
-    shared: { uploadProfilePicture },
-    admin: { settings },
-  } = useZomujoApi(false);
+const SignatureImageUploadDialog = ({ onClose }: { onClose: () => void }) => {
+  const { uploadSignature } = useZomujoApi(false).doctors.records;
   const [file, setFile] = useState<File | undefined>();
 
   const { mutate, isPending } = useMutation({
-    mutationKey: ["deleteProfilePicture"],
+    mutationKey: ["patients", "upload"],
     mutationFn: (file: File) => {
       if (file === undefined) {
         throw new Error("Upload an image first");
       }
       const formData = new FormData();
-
-      if (isServiceMode("PATIENT")) {
-        formData.append("image", file);
-        return uploadProfilePicture(formData);
-      }
-      if (isServiceMode("DOCTOR")) {
-        formData.append("profilePicture", file);
-        return uploadProfilePicture(formData);
-      }
-
-      formData.append("profilePicture", file);
-      return settings.uploadProfilePicture(formData);
+      formData.append("signature", file);
+      return uploadSignature(formData);
     },
     onSuccess: async () => {
-      toast.success("Account Profile Picture Updated!");
-      await queryClient.invalidateQueries({ queryKey: ["user", "details"] });
+      toast.success(`Doctor Signature Image Uploaded!`);
       onClose();
     },
     onError: (error) => {
@@ -54,7 +37,7 @@ const UploadProfilePictureDialog = ({ onClose }: { onClose: () => void }) => {
   return (
     <div className="relative flex flex-col gap-8 rounded-xl bg-white p-5 shadow-xl">
       <div className="flex flex-col items-start gap-4">
-        <p className="text-2xl font-bold leading-8">Upload profile picture</p>
+        <p className="text-2xl font-bold leading-8">Upload Signature</p>
 
         <SingleImageDropzone
           dropzoneOptions={{
@@ -65,9 +48,9 @@ const UploadProfilePictureDialog = ({ onClose }: { onClose: () => void }) => {
             },
             maxSize: 5 * 1024 * 1024,
           }}
-          height={280}
+          height={200}
           width={300}
-          label="Front"
+          label={"Signature Image"}
           value={file}
           onChange={setFile}
         />
@@ -99,4 +82,4 @@ const UploadProfilePictureDialog = ({ onClose }: { onClose: () => void }) => {
   );
 };
 
-export default UploadProfilePictureDialog;
+export default SignatureImageUploadDialog;

@@ -299,8 +299,9 @@ export const isUrl = (url: string | null | undefined) => {
 
 // Create query string
 export const createQueryString = (
-  params: Record<string, string | number | null | undefined>,
+  params: Record<string, string | number | null | undefined> | undefined,
 ) => {
+  if (!params) return "";
   const newSearchParams = new URLSearchParams();
 
   for (const [key, value] of Object.entries(params)) {
