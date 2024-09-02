@@ -220,6 +220,7 @@ const StepThreeView = ({
       </div>
       <Dialog
         isOpen={paymentData !== undefined}
+        disableOutsideClick
         dialogChild={() => (
           <VerifyPaymentDialog
             onClose={() => {
