@@ -47,7 +47,7 @@ export default function Login() {
         </div>
 
         <div className="mt-5 flex flex-col justify-center px-4 text-center text-sm sm:flex-row sm:gap-6">
-          <p className="text-sm">© 2023 Zyptyk. All rights reserved.</p>
+          <p className="text-sm">© 2023 ZMR. All rights reserved.</p>
 
           <div className="space-x-1 text-primaryDark">
             <Link href="/">Terms & Conditions</Link>

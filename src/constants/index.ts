@@ -101,11 +101,6 @@ export const DOCTORSMENUTABS = [
     label: "Messages",
     link: "/messages",
   },
-  {
-    Icon: Share01Icon,
-    label: "Referrals",
-    link: "/referrals",
-  },
 ];
 
 export const ADMIN_MENUTABS = [
