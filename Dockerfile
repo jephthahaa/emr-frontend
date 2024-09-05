@@ -1,4 +1,4 @@
-FROM node:18-alpine AS base
+FROM bun/oven AS base
 
 # 1. Install dependencies only when needed
 FROM base AS deps
@@ -8,9 +8,9 @@ RUN apk add --no-cache libc6-compat
 WORKDIR /app
 
 # Install dependencies based on the preferred package manager
-COPY package.json yarn.lock* pnpm-lock.yaml* ./
+COPY package.json package-lock.json* yarn.lock* pnpm-lock.yaml* ./
 
-RUN npm install --production
+RUN bun install
 # RUN \
 #   if [ -f yarn.lock ]; then yarn --frozen-lockfile; \
 #   elif [ -f package-lock.json ]; then npm ci; \
@@ -19,7 +19,7 @@ RUN npm install --production
 #   fi
 
 # 2. Rebuild the source code only when needed
-FROM base AS builder
+FROM node:18-alpine AS builder
 WORKDIR /app
 COPY --from=deps /app/node_modules ./node_modules
 COPY . .
