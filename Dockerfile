@@ -1,4 +1,4 @@
-FROM bun/oven AS base
+FROM oven/bun AS base
 
 # 1. Install dependencies only when needed
 FROM base AS deps
