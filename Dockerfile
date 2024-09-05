@@ -37,7 +37,7 @@ ENV NEXT_PUBLIC_API_URL=http://localhost:9000 \
 RUN npm run build
 
 # 3. Production image, copy all the files and run next
-FROM base AS runner
+FROM builder AS runner
 WORKDIR /app
 
 ENV NODE_ENV=production
